@@ -25,6 +25,22 @@ body {
   flex-direction: column;
 }
 
+.primary-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.primary-btn {
+  background-color: #45a049;
+}
+
 header {
   padding: 1rem 2rem;
   margin-bottom: 1rem;
@@ -77,6 +93,11 @@ header {
 
 .post .post-content {
   color: #ddd;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .post::before {
@@ -147,27 +168,14 @@ header {
   font-size: 1.2rem;
 }
 
-#new-post-form button,
-header a {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  border: none;
-  background-color: #4caf50;
-  color: #fff;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-decoration: none;
-}
-
-#new-post-form button:hover,
-header a:hover {
-  background-color: #45a049;
-}
-
 .view-post-container {
   padding: 2rem;
+}
+
+.view-post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .view-post-container .post-username {
@@ -180,7 +188,8 @@ header a:hover {
 }
 
 .view-post-container .post-date {
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-style: italic;
   color: #dadada;
   margin-top: 1rem;
 }

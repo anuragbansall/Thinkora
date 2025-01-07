@@ -18,14 +18,14 @@ const posts = [
         username: "anuragbansall",
         title: "Welcome to My Blog",
         content: "This is my first blog post!",
-        date: new Date().toLocaleDateString()
+        date: 'Tue Jan 07 2025'
     },
     {
         id: uuidv4(),
         username: "sarahjones",
         title: "My Second Blog Post",
         content: "I've been trying to learn more about programming!",
-        date: new Date().toLocaleDateString()
+        date: 'Tue Jan 07 2025'
     },
 ]
 
@@ -34,7 +34,7 @@ app.get('/posts', (req, res) => {
 })
 
 app.get('/posts/new', (req, res) => {
-    res.render("new.ejs")
+    res.render("new.ejs", { post: null })
 })
 
 app.get('/posts/:id', (req, res) => {
@@ -45,10 +45,31 @@ app.get('/posts/:id', (req, res) => {
 
 app.post('/posts', (req, res) => {
     const { username, title, content } = req.body
-    posts.push({ username, title, content, id: uuidv4(), date: new Date().toLocaleDateString() })
+    const id = uuidv4()
+    const date = new Date().toDateString()
+    posts.push({ username, title, content, id, date })
     res.redirect('/posts')
 })
 
+app.get('/posts/:id/edit', (req, res) => {
+    const { id } = req.params;
+    const post = posts.find(p => p.id === id);
+    res.render('new.ejs', { post });
+});
+
+app.patch("/posts/:id", (req, res) => {
+    const { id } = req.params;
+    const postIndex = posts.findIndex(p => p.id === id);
+    const newPost = req.body;
+    if (postIndex!== -1) {
+        posts[postIndex] = {...posts[postIndex], ...newPost };
+        res.send('Post updated');
+        res.redirect(`/posts/${id}`);
+    }
+    else {
+        res.status(404).send('Post not found')
+    }
+})
 
 const port = 3000
 
