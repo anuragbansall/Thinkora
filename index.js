@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const { v4: uuidv4 } = require('uuid');
+const methodOverride = require('method-override')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -10,6 +11,7 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(methodOverride('_method'))
 
 // Todo: Will add Database later, for now we will use static data
 const posts = [
@@ -63,7 +65,6 @@ app.patch("/posts/:id", (req, res) => {
     const newPost = req.body;
     if (postIndex!== -1) {
         posts[postIndex] = {...posts[postIndex], ...newPost };
-        res.send('Post updated');
         res.redirect(`/posts/${id}`);
     }
     else {

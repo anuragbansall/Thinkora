@@ -11,8 +11,8 @@
       <h2><%= post ? "Edit Post" : "New Post" %></h2>
       <form
         id="new-post-form"
-        action="<%= post ? `/posts/${post.id}` : '/posts' %>"
-        method="<%= post ? 'PATCH' : 'POST' %>"
+        action="<%= post ? `/posts/${post.id}?_method=PATCH` : '/posts' %>"
+        method="POST"
       >
         <label for="username">Username:</label>
         <input
