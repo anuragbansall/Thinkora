@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Thinkora | View Post</title>
+  </head>
+  <body>
+    <div class="view-post-container">
+      <div class="post-user-info">
+        <p class="post-username">@<%= post.username %></p>
+        <p class="post-date">Published on: <%= post.date %></p>
+      </div>
+      <div class="view-post">
+        <h3 class="post-title"><%= post.title %></h3>
+        <p class="post-content"><%= post.content %></p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Thinkora</title>
+  </head>
+  <body>
+    <header>
+      <h1>Thinkora.</h1>
+      <a href="/posts/new">New Post</a>
+    </header>
+    <ul class="posts-container">
+      <% posts.forEach(post => { %>
+      <a href="/posts/<%= post.id %>" class="post">
+        <h2 class="post-username">@<%= post.username %></h2>
+        <h3 class="post-title"><%= post.title %></h3>
+        <p class="post-content"><%= post.content %></p>
+      </a>
+      <% }) %>
+    </ul>
+  </body>
+</html>

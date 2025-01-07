@@ -1,0 +1,206 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 20px;
+}
+
+html,
+body {
+  min-height: 100vh;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  background-color: #111;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 820px;
+  max-width: 100%;
+  margin: 0 auto;
+  list-style: none;
+  padding-bottom: 5rem;
+}
+
+.post {
+  color: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background-color: #222;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 20px;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all 0.2s ease;
+}
+
+.post:hover {
+  background-color: #333;
+}
+
+.post .post-username {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.post .post-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.post .post-content {
+  color: #ddd;
+}
+
+.post::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 4px;
+  background: linear-gradient(to right, transparent, white, transparent);
+  transition: all 0.25s ease;
+}
+
+.post:hover::before {
+  width: 100%;
+}
+
+.post:active {
+  background-color: #444;
+}
+
+.new-post-container {
+  margin: auto;
+  background-color: #222;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 25rem;
+  max-width: 100%;
+}
+
+.new-post-container h2 {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 2rem;
+  color: #ccc;
+  text-align: center;
+}
+
+#new-post-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#new-post-form input,
+#new-post-form textarea {
+  margin-bottom: 1rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  font-size: 1.2rem;
+  width: 100%;
+  resize: vertical;
+  max-height: 10rem;
+  max-width: 100%;
+}
+
+#new-post-form input:focus,
+#new-post-form textarea:focus {
+  background-color: transparent;
+}
+
+#new-post-form label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+#new-post-form button,
+header a {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+#new-post-form button:hover,
+header a:hover {
+  background-color: #45a049;
+}
+
+.view-post-container {
+  padding: 2rem;
+}
+
+.view-post-container .post-username {
+  font-size: 1.25rem;
+  cursor: pointer;
+  background-color: #222;
+  padding: 1rem 1.5rem;
+  width: fit-content;
+  border-radius: 0 0 10px 10px;
+}
+
+.view-post-container .post-date {
+  font-size: 1.2rem;
+  color: #dadada;
+  margin-top: 1rem;
+}
+
+.view-post-container .post-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.view-post-container .post-content {
+  font-size: 1.2rem;
+  color: #dadada;
+}
+
+.view-post-container .view-post {
+  margin-top: 2rem;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid #222;
+}
