@@ -18,7 +18,9 @@
         <h3 class="post-title"><%= post.title %></h3>
         <p class="post-content"><%= post.content %></p>
       </a>
-      <% }) %>
+      <% }) %> <%if(!posts.length){%>
+      <h2 class="no-post-mssg">No Post Found</h2>
+      <%}%>
     </ul>
   </body>
 </html>

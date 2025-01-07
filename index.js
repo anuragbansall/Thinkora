@@ -11,6 +11,7 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
 app.use(express.static(path.join(__dirname, 'public')))
+
 app.use(methodOverride('_method'))
 
 // Todo: Will add Database later, for now we will use static data
@@ -31,20 +32,31 @@ const posts = [
     },
 ]
 
+// Posts Route
 app.get('/posts', (req, res) => {
     res.render("index.ejs", {posts})
 })
 
+// New Post Route
 app.get('/posts/new', (req, res) => {
     res.render("new.ejs", { post: null })
 })
 
+// Edit Post Route
+app.get('/posts/:id/edit', (req, res) => {
+    const { id } = req.params;
+    const post = posts.find(p => p.id === id);
+    res.render('new.ejs', { post });
+});
+
+// Show Post Route
 app.get('/posts/:id', (req, res) => {
     const { id } = req.params
     const post = posts.find(p => p.id === id);
     res.render("show.ejs", { post })
 })
 
+// New Post Endpoint
 app.post('/posts', (req, res) => {
     const { username, title, content } = req.body
     const id = uuidv4()
@@ -53,12 +65,7 @@ app.post('/posts', (req, res) => {
     res.redirect('/posts')
 })
 
-app.get('/posts/:id/edit', (req, res) => {
-    const { id } = req.params;
-    const post = posts.find(p => p.id === id);
-    res.render('new.ejs', { post });
-});
-
+// Update Post Endpoint
 app.patch("/posts/:id", (req, res) => {
     const { id } = req.params;
     const postIndex = posts.findIndex(p => p.id === id);
@@ -68,6 +75,18 @@ app.patch("/posts/:id", (req, res) => {
         res.redirect(`/posts/${id}`);
     }
     else {
+        res.status(404).send('Post not found')
+    }
+})
+
+// Delete Post Endpoint
+app.delete("/posts/:id", (req, res) => {
+    const {id} = req.params
+    const postIndex = posts.findIndex(p => p.id === id)
+    if(postIndex !== -1){
+        posts.splice(postIndex, 1)
+        res.redirect('/posts')
+    }else{
         res.status(404).send('Post not found')
     }
 })

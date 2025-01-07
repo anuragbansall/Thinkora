@@ -11,7 +11,18 @@
       <div class="post-user-info">
         <div class="view-post-header">
           <p class="post-username">@<%= post?.username %></p>
-          <a href="/posts/<%= post.id %>/edit" class="primary-btn">Edit Post</a>
+          <span>
+            <a href="/posts/<%= post.id %>/edit" class="primary-btn"
+              >Edit Post</a
+            >
+            <form
+              action="/posts/<%= post.id %>?_method=DELETE"
+              method="POST"
+              style="display: inline"
+            >
+              <button type="submit" class="primary-btn" style="background-color: rgb(193, 28, 28);">Delete Post</button>
+            </form>
+          </span>
         </div>
         <p class="post-date">Published on: <%= post?.date %></p>
       </div>

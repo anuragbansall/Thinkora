@@ -41,6 +41,13 @@ body {
   background-color: #45a049;
 }
 
+.no-post-mssg{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 header {
   padding: 1rem 2rem;
   margin-bottom: 1rem;
